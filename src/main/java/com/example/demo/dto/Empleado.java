@@ -29,9 +29,15 @@ public class Empleado {
 	
 	
 	public enum Trabajo{
-		Programador,
-		DataAnalyst,
-		QA
+		Programador("programador"),
+		DataAnalyst("datanalyst"),
+		QA("qa");
+		
+		private String trb;
+		
+		Trabajo(String trb) {
+			this.trb = trb;
+		}
 	}
 	//Constructores de clase
 	public Empleado() {
@@ -45,6 +51,7 @@ public class Empleado {
 		this.direccion = direccion;
 		this.trabajo = trabajo;
 		this.sueldo = sueldo;
+		setSueldo();
 	}
 
 	public int getId() {
@@ -84,15 +91,24 @@ public class Empleado {
 	}
 
 	public void setTrabajo(String trabajo) {
-		this.trabajo = trabajo;
+		
 	}
 
 	public double getSueldo() {
 		return sueldo;
 	}
 
-	public void setSueldo(double sueldo) {
-		this.sueldo = sueldo;
+	public void setSueldo() {
+		
+		if (trabajo == "programador") {
+			sueldo = 100;
+		} else if (trabajo == "datanalyst"){
+			sueldo = 50;
+		} else if (trabajo == "qa") {
+			sueldo = 25;
+		} else {
+			sueldo = 10;
+		}
 	}
 
 	@Override
