@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.Empleado;
-import com.example.demo.services.EmpleadoServiceImpl;
+import com.example.demo.services.IEmpleadoService;
 
 @RestController
 @RequestMapping("/empleado")
 public class EmpleadosController {
 
-	@Autowired
 	public
-	EmpleadoServiceImpl empleadoServiImpl;
+	IEmpleadoService empService;
 	
 	@PostMapping("/add")
 	public Empleado insertEmpleado(@RequestBody Empleado empleado) {
 		
-		return empleadoServiImpl.saveEmpleado(empleado);
+		return empService.saveEmpleado(empleado);
 	}
 	
 	
@@ -33,7 +32,7 @@ public class EmpleadosController {
 		
 		Empleado empleado_porId= new Empleado();
 		
-		empleado_porId=empleadoServiImpl.empleadoPorId(id);
+		empleado_porId=empService.empleadoPorId(id);
 		
 		System.out.println("Empleado por ID: "+empleado_porId);
 		
@@ -46,15 +45,15 @@ public class EmpleadosController {
 		Empleado empleadoSeleccionado= new Empleado();
 		Empleado empleadoUpdated= new Empleado();
 		
-		empleadoSeleccionado= empleadoServiImpl.empleadoPorId(id);
+		empleadoSeleccionado= empService.empleadoPorId(id);
 		
 		empleadoSeleccionado.setNombre(empleado.getNombre());
 		empleadoSeleccionado.setApellido(empleado.getApellido());
 		empleadoSeleccionado.setDireccion(empleado.getDireccion());
 		empleadoSeleccionado.setTrabajo(empleado.getTrabajo());
-		empleadoSeleccionado.setSueldo(empleado.getSueldo());
+		empleadoSeleccionado.setSueldo();
 		
-		empleadoUpdated = empleadoServiImpl.updateEmpleado(empleadoSeleccionado);
+		empleadoUpdated = empService.updateEmpleado(empleadoSeleccionado);
 		
 		System.out.println("El cliente actualizado es: "+ empleadoUpdated);
 		
@@ -63,7 +62,7 @@ public class EmpleadosController {
 	
 	@DeleteMapping("/{id}")
 	public void deleteEmpleado(@PathVariable(name="id")Integer id) {
-		empleadoServiImpl.eliminarEmpleado(id);
+		empService.eliminarEmpleado(id);
 		System.out.println("Empleado eliminado");
 	}
 	
