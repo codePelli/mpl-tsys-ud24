@@ -3,46 +3,49 @@ package com.example.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.dao.IEmpleadoDAO;
 import com.example.demo.dto.Empleado;
-import com.example.demo.dao.IEmpeladoDAO;
-
 
 @Service
 public class EmpleadoServiceImpl implements IEmpleadoService {
 	
 	@Autowired
-	IEmpeladoDAO iEmpleadoDAO;
+	@Lazy
+	IEmpleadoDAO iEmpServ;
 
-	//Listar todos
-		public List<Empleado> listEmpleados(){
-			return iEmpleadoDAO.findAll();
-		};
-		
-		//Listar por id
-		public Empleado empleadoPorId(Integer id) {
-			return iEmpleadoDAO.findById(id).get();
-		}; 
-		
-		//Guardar
-		public Empleado saveEmpleado(Empleado empleado) {
-			return iEmpleadoDAO.save(empleado);
-		};
-		
-		//Actualizar
-		public Empleado updateEmpleado(Empleado empleado) {
-			return iEmpleadoDAO.save(empleado);
-		};
-		
-		//Eliminar
-		public void eliminarEmpleado(Integer id) {
-			iEmpleadoDAO.deleteById(id);
-		}
+	@Override
+	public List<Empleado> listEmpleados() {
+		// TODO Auto-generated method stub
+		return iEmpServ.findAll();
+	}
 
-		@GetMapping("/all")
-		public List<Empleado> listarEmpleados(){
-			return listEmpleados();
-		};
+	@Override
+	public Empleado empleadoPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return iEmpServ.findById(id).get();
+	}
+
+	@Override
+	public Empleado saveEmpleado(Empleado empleado) {
+		// TODO Auto-generated method stub
+		return iEmpServ.save(empleado);
+	}
+
+	@Override
+	public Empleado updateEmpleado(Empleado empleado) {
+		// TODO Auto-generated method stub
+		return iEmpServ.save(empleado);
+	}
+
+	@Override
+	public void eliminarEmpleado(Integer id) {
+		// TODO Auto-generated method stub
+		iEmpServ.deleteById(id);
+	}
+
+
+
 }

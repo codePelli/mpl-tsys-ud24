@@ -11,10 +11,10 @@ public interface IEmpleadoService {
 	public Empleado empleadoPorId(Integer id); 
 	
 	//Guardar
-	public Empleado saveEmpleado(Empleado cliente);
+	public Empleado saveEmpleado(Empleado empleado);
 	
 	//Actualizar
-	public Empleado updateEmpleado(Empleado cliente);
+	public Empleado updateEmpleado(Empleado empleado);
 	
 	//Eliminar
 	public void eliminarEmpleado(Integer id);

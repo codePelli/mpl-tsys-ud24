@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Empleado")
+@Table(name="empleado")
 public class Empleado {
 	
 	//Atributos de la clase
@@ -23,22 +23,13 @@ public class Empleado {
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	@Enumerated(EnumType.STRING)
 	private String trabajo;
 	private double sueldo;
 	
-	
 	public enum Trabajo{
-		Programador("programador"),
-		DataAnalyst("datanalyst"),
-		QA("qa");
-		
-		private String trb;
-		
-		Trabajo(String trb) {
-			this.trb = trb;
-		}
-	}
+		programador,  datanalyst, qa
+		};
+				
 	//Constructores de clase
 	public Empleado() {
 	}
@@ -91,7 +82,7 @@ public class Empleado {
 	}
 
 	public void setTrabajo(String trabajo) {
-		
+		this.trabajo = trabajo;
 	}
 
 	public double getSueldo() {
@@ -100,11 +91,11 @@ public class Empleado {
 
 	public void setSueldo() {
 		
-		if (trabajo == "programador") {
+		if ("programador".equals(trabajo)) {
 			sueldo = 100;
-		} else if (trabajo == "datanalyst"){
+		} else if ("datanalyst".equals(trabajo)){
 			sueldo = 50;
-		} else if (trabajo == "qa") {
+		} else if ("qa".equals(trabajo)) {
 			sueldo = 25;
 		} else {
 			sueldo = 10;

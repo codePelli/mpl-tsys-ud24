@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +21,8 @@ import com.example.demo.services.IEmpleadoService;
 @RequestMapping("/empleado")
 public class EmpleadosController {
 
-	public
-	EmpleadoServiceImpl empService;
+	@Autowired
+	private EmpleadoServiceImpl empService;
 	
 	@PostMapping("/add")
 	public Empleado insertEmpleado(@RequestBody Empleado empleado) {
@@ -27,9 +30,14 @@ public class EmpleadosController {
 		return empService.saveEmpleado(empleado);
 	}
 	
+    @GetMapping("/list")
+    public List<Empleado> listEmpleados() {
+        return empService.listEmpleados();
+    }
+	
 	
 	@GetMapping("/{id}")
-	public Empleado empleadoPorId(@PathVariable(name="id") Integer id) {
+	public Empleado empleadoPorId(@PathVariable Integer id) {
 		
 		Empleado empleado_porId= new Empleado();
 		
@@ -41,7 +49,7 @@ public class EmpleadosController {
 	}
 	
 	@PutMapping("/{id}")
-	public Empleado updateEmpleado(@PathVariable(name="id")Integer id,@RequestBody Empleado empleado) {
+	public Empleado updateEmpleado(@PathVariable Integer id,@RequestBody Empleado empleado) {
 		
 		Empleado empleadoSeleccionado= new Empleado();
 		Empleado empleadoUpdated= new Empleado();
