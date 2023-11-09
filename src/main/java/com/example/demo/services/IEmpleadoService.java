@@ -2,7 +2,7 @@ package com.example.demo.services;
 import java.util.List;
 import com.example.demo.dto.Empleado;
 
-public interface IEmpeladoService {
+public interface IEmpleadoService {
 	
 	//Listar todos
 	public List<Empleado> listEmpleados();

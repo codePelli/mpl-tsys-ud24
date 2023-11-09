@@ -11,7 +11,7 @@ import com.example.demo.dao.IEmpeladoDAO;
 
 
 @Service
-public class EmpleadoServiceImpl implements IEmpeladoService {
+public class EmpleadoServiceImpl implements IEmpleadoService {
 	
 	@Autowired
 	IEmpeladoDAO iEmpleadoDAO;

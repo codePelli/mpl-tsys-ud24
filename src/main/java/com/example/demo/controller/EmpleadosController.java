@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.Empleado;
+import com.example.demo.services.EmpleadoServiceImpl;
 import com.example.demo.services.IEmpleadoService;
 
 @RestController
@@ -18,7 +19,7 @@ import com.example.demo.services.IEmpleadoService;
 public class EmpleadosController {
 
 	public
-	IEmpleadoService empService;
+	EmpleadoServiceImpl empService;
 	
 	@PostMapping("/add")
 	public Empleado insertEmpleado(@RequestBody Empleado empleado) {
