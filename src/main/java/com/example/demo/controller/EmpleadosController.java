@@ -64,7 +64,7 @@ public class EmpleadosController {
 		
 		empleadoUpdated = empService.updateEmpleado(empleadoSeleccionado);
 		
-		System.out.println("El cliente actualizado es: "+ empleadoUpdated);
+		System.out.println("El empleado actualizado es: "+ empleadoUpdated);
 		
 		return empleadoUpdated;
 	}

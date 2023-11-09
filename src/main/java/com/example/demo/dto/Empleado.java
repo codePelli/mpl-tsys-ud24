@@ -83,13 +83,6 @@ public class Empleado {
 
 	public void setTrabajo(String trabajo) {
 		this.trabajo = trabajo;
-	}
-
-	public double getSueldo() {
-		return sueldo;
-	}
-
-	public void setSueldo() {
 		
 		if ("programador".equals(trabajo)) {
 			sueldo = 100;
@@ -100,6 +93,14 @@ public class Empleado {
 		} else {
 			sueldo = 10;
 		}
+	}
+
+	public double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo() {
+		this.sueldo = sueldo;
 	}
 
 	@Override
